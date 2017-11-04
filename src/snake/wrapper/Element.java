@@ -26,15 +26,12 @@ public class Element<E> {
 	 * @throws IllegalArgumentException if {@code elem} is {@code null}. 
 	 */
 	public Element(E elem) {
-		if(elem==null)
-		{
+		if(elem == null) {
 			throw new IllegalArgumentException("null is not a valid element for the wrapper");
 		}
-		else
-		{
-			_elem=elem;
-		}
-		_type=_elem.getClass().getName();
+		
+		_elem = elem;
+		_type = _elem.getClass().getName();
 	}
 	
 	/**
@@ -42,7 +39,6 @@ public class Element<E> {
 	 * @return the wrapped element.
 	 */
 	public E getElement() {
-		
 		return _elem;
 	}
 	
