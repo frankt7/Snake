@@ -51,7 +51,6 @@ public class Element<E> {
 	 * @return the {@code String} representation of the wrapped element's type.
 	 */
 	public String getType() {
-	
 		return _type;
 	}
 }
