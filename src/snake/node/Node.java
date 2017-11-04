@@ -1,5 +1,7 @@
 package snake.node;
 
+import com.sun.org.apache.bcel.internal.generic.Type;
+
 import snake.wrapper.Element;
 import snake.wrapper.ElementType;
 
@@ -23,7 +25,10 @@ public class Node {
 	 * @param next - a reference to the next {@link Node}.
 	 */
 	public <E> Node(E elem, Node next) {
-		// TODO
+		
+		_elem = new Element<E>(elem);
+		
+		this._next = next;
 	}
 	
 	/**
@@ -39,8 +44,8 @@ public class Node {
 	 * @return the next {@link Node}.
 	 */
 	public Node getNext() {
-		// TODO
-		return null;
+
+		return _next;
 	}
 	
 	/**
@@ -48,7 +53,8 @@ public class Node {
 	 * @param nextNode - the next {@link Node}.
 	 */
 	public void setNext(Node nextNode) {
-		// TODO
+		
+		this._next = nextNode;
 	}
 	
 	/**
@@ -56,7 +62,8 @@ public class Node {
 	 * @param elem - the new element to be stored.
 	 */
 	public <E> void setElement(E elem) {
-		// TODO
+		
+		_elem = new Element<E>(elem);
 	}
 	
 	/**
@@ -65,8 +72,10 @@ public class Node {
 	 * @return the element stored in this {@link Node}.
 	 */ 
 	public <E> E getElement() {
-		// TODO
-		return null;
+		
+		Element<E> elem = (Element<E>) _elem;
+		
+		return elem.getElement();
 	}
 	
 	/**
@@ -76,7 +85,9 @@ public class Node {
 	 * @return the type of the element of this {@link Node}.
 	 */
 	public <E> String getType() {
-		// TODO
-		return null;
+		
+		Element<E> type = (Element<E>) _elem;
+		
+		return type.getType();
 	}
 }
