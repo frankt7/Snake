@@ -5,8 +5,9 @@ package snake.wrapper;
  * If the wrapped element is mutable, this class does
  * not guarantee its integrity.
  * @param <E> the type of the element.
+ * @see {@link ElementType}
  */
-public class Element<E> {
+public class Element<E> implements ElementType {
 	/**
 	 * Fields
 	 * 
