@@ -26,7 +26,15 @@ public class Element<E> {
 	 * @throws IllegalArgumentException if {@code elem} is {@code null}. 
 	 */
 	public Element(E elem) {
-		// TODO
+		if(elem==null)
+		{
+			throw new IllegalArgumentException("null is not a valid element for the wrapper");
+		}
+		else
+		{
+			_elem=elem;
+		}
+		_type=_elem.getClass().getName();
 	}
 	
 	/**
@@ -34,8 +42,8 @@ public class Element<E> {
 	 * @return the wrapped element.
 	 */
 	public E getElement() {
-		// TODO
-		return null;
+		
+		return _elem;
 	}
 	
 	/**
@@ -43,7 +51,7 @@ public class Element<E> {
 	 * @return the {@code String} representation of the wrapped element's type.
 	 */
 	public String getType() {
-		// TODO
-		return null;
+	
+		return _type;
 	}
 }
