@@ -1,6 +1,7 @@
 package snake;
 
 import hacking.sneks.Snek;
+import snake.node.Node;
 
 /**
  * Singly linked list implementation of the {@link hacking.sneks.Snek} interface.
@@ -8,6 +9,16 @@ import hacking.sneks.Snek;
  * {@code null} is never a valid element.
  */
 public class Snake implements Snek {
+	Node _head;
+	int  _size;
+	
+	/**
+	 * Creates an empty {@link Snek}.
+	 */
+	public Snake() {
+		// TODO
+	}
+	
 	@Override
 	public <E> void add(E elem) {
 		// TODO
@@ -17,5 +28,11 @@ public class Snake implements Snek {
 	public <E> boolean remove(E elem) {
 		// TODO
 		return false;
+	}
+	
+	@Override
+	public <E> E get(int index) {
+		// TODO
+		return null;
 	}
 }

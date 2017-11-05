@@ -23,5 +23,12 @@ public interface Snek {
 	 */
 	public <E> boolean remove(E elem);
 	
-	
+	/**
+	 * Returns the element at the supplied index. This method must throw an unchecked exception
+	 * if the supplied index is not a valid position in the list.
+	 * @param index - the position of the element.
+	 * @return the element at that position
+	 * @throws RuntimeExcpetion if index is not a valid position.
+	 */
+	public <E> E get(int index);
 }
