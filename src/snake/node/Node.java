@@ -24,6 +24,10 @@ public class Node {
 	 * @param next - a reference to the next {@link Node}.
 	 */
 	public <E> Node(E elem, Node next) {
+		/**
+		 * since Element does not accept null and it throws exceptions when null
+		 * is supplied, this class does not need to check the input.
+		 */
 		_elem = new Element<E>(elem);
 		_next = next;
 	}
