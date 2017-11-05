@@ -33,7 +33,7 @@ public class Snake implements Snek {
 		}
 		else {
 			
-			Node firstOne = new Node(elem, null);
+			new Node(elem, null);
 		}
 		
 	}
