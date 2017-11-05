@@ -15,7 +15,7 @@ public interface Snek {
 	
 	/**
 	 * Adds an element to the supplied position of this list. This method must throw an unchecked
-	 * exception if the supplied index in not a valid position.
+	 * exception if the supplied index is not a valid position.
 	 * @param index - the position of the element to insert.
 	 * @param elem  - the element to be added.
 	 * @throws RuntimeException if index is not a valid position.
@@ -26,11 +26,28 @@ public interface Snek {
 	 * Removes the first occurrence of element which is equal to the supplied argument from
 	 * the list. If the an element is removed from this list, {@code true} is returned;
 	 * otherwise {@code false} is returned. {@link Object#equals(Object)} must be
-	 * overriden properly for this method to work.
+	 * overridden properly for this method to work.
 	 * @param elem - the element to be removed
 	 * @return {@code true} if an element is remove; {@code false} otherwise.
 	 */
 	public <E> boolean remove(E elem);
+	
+	/**
+	 * Removes the element at the supplied index. This method must throw an unchecked exception
+	 * if the supplied index is not a valid position.
+	 * @param index - the position of the element to be removed.
+	 * @throws RuntimeException if index is not a valid position.
+	 */
+	public <E> void remove(int index);
+	
+	/**
+	 * Returns the index where the supplied argument can be found. If the supplied element does not
+	 * exist in the list, -1 is returned. {@link Object#equals(Object)} must be
+	 * overridden properly for this method to work.
+	 * @param elem - the element to be found.
+	 * @return -1 if element cannot be found; otherwise the index of the element.
+	 */
+	public <E> int getIndexOf(E elem);
 	
 	/**
 	 * Returns the element at the supplied index. This method must throw an unchecked exception
@@ -40,4 +57,10 @@ public interface Snek {
 	 * @throws RuntimeExcpetion if index is not a valid position.
 	 */
 	public <E> E get(int index);
+	
+	/**
+	 * Returns the number of elements stored in this list.
+	 * @return the number of elements stored in this list.
+	 */
+	public int size();
 }

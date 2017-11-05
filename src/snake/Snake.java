@@ -19,20 +19,57 @@ public class Snake implements Snek {
 		// TODO
 	}
 	
+	/**
+	 * @throws IllegalArgumentException if the supplied element is {@code null}.
+	 */
 	@Override
 	public <E> void add(E elem) {
 		// TODO
 	}
 	
+	/**
+	 * @throws IndexOutOfBoundsException if index < 0 && index >= size
+	 */
+	@Override
+	public <E> void add(int index, E elem) {
+		// TODO
+	}
+	
+	/**
+	 * @throws NullPointerException if the supplied element is {@code null}.
+	 */
 	@Override
 	public <E> boolean remove(E elem) {
 		// TODO
 		return false;
 	}
 	
+	/**
+	 * @throws IndexOutOfBoundsException if index < 0 && index >= size
+	 */
+	@Override
+	public <E> void remove(int index) {
+		// TODO
+	}
+	
+	/**
+	 * @throws IndexOutOfBoundsException if index < 0 && index >= size
+	 */
 	@Override
 	public <E> E get(int index) {
 		// TODO
 		return null;
+	}
+
+	@Override
+	public <E> int getIndexOf(E elem) {
+		// TODO
+		return 0;
+	}
+	
+	@Override
+	public int size() {
+		// TODO
+		return 0;
 	}
 }
