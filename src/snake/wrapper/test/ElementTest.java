@@ -7,10 +7,10 @@ import java.lang.reflect.Field;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.After;
 
 import snake.wrapper.Element;
 
+@SuppressWarnings("unchecked")
 public class ElementTest {
 	Field elementField;
 	Field typeField;             
@@ -35,58 +35,18 @@ public class ElementTest {
 		}
 	}
 	
-	@After
-	public void cleanUp() {
-		strElement = null;
-		intElement = null;
-	}
-	
 	@Test
 	public void testConstructorWithString() throws Exception {
-		String elem;
-		String type;
-		
-		strElement = new Element<String>("");
-		elem = (String) elementField.get(strElement);
-		type = (String) typeField.get(strElement);
-		assertEquals("The constructor initializes the element field incorrectly", "", elem);
-		assertEquals("The constructor initializes the type field incorrectly", "".getClass().getName(), type);
-		
-		strElement = new Element<String>("ajiod aoisdjw");
-		elem = (String) elementField.get(strElement);
-		type = (String) typeField.get(strElement);
-		assertEquals("The constructor initializes the element field incorrectly", "ajiod aoisdjw", elem);
-		assertEquals("The constructor initializes the type field incorrectly", "ajiod aoisdjw".getClass().getName(), type);
-		
-		strElement = new Element<String>("madvaoi8 9");
-		elem = (String) elementField.get(strElement);
-		type = (String) typeField.get(strElement);
-		assertEquals("The constructor initializes the element field incorrectly", "madvaoi8 9", elem);
-		assertEquals("The constructor initializes the type field incorrectly", "madvaoi8 9".getClass().getName(), type);
+		testConstructorWithString("");
+		testConstructorWithString("JOij983JIEJijwo3 oiJI");
+		testConstructorWithString(" 823 jIODJ oiwj");
 	}
 	
 	@Test
 	public void testConstructorWithInt() throws Exception {
-		Integer elem;
-		String  type;
-		
-		intElement = new Element<Integer>(-40);
-		elem = (Integer) elementField.get(intElement);
-		type = (String) typeField.get(intElement);
-		assertEquals("The constructor initializes the element field incorrectly", -40, elem.intValue());
-		assertEquals("The constructor initializes the type field incorrectly", new Integer(-40).getClass().getName(), type);
-		
-		intElement = new Element<Integer>(0);
-		elem = (Integer) elementField.get(intElement);
-		type = (String) typeField.get(intElement);
-		assertEquals("The constructor initializes the element field incorrectly", 0, elem.intValue());
-		assertEquals("The constructor initializes the type field incorrectly", new Integer(0).getClass().getName(), type);
-		
-		intElement = new Element<Integer>(42);
-		elem = (Integer) elementField.get(intElement);
-		type = (String) typeField.get(intElement);
-		assertEquals("The constructor initializes the element field incorrectly", 42, elem.intValue());
-		assertEquals("The constructor initializes the type field incorrectly", new Integer(42).getClass().getName(), type);
+		testConstructorWithInt(-40);
+		testConstructorWithInt(0);
+		testConstructorWithInt(42);
 	}
 	
 	@Test
@@ -107,5 +67,27 @@ public class ElementTest {
 		} catch(IllegalArgumentException e) {
 			// expected
 		}
+	}
+	
+	private void testConstructorWithString(String str) throws Exception {
+		String elem;
+		Class<String> type;
+		
+		strElement = new Element<String>(str);
+		elem = (String) elementField.get(strElement);
+		type = (Class<String>) typeField.get(strElement);
+		assertEquals("The constructor initializes the element field incorrectly", str, elem);
+		assertEquals("The constructor initializes the type field incorrectly", str.getClass(), type);
+	}
+	
+	private void testConstructorWithInt(Integer val) throws Exception {
+		Integer elem;
+		Class<Integer> type;
+		
+		intElement = new Element<Integer>(val);
+		elem = (Integer) elementField.get(intElement);
+		type = (Class<Integer>) typeField.get(intElement);
+		assertEquals("The constructor initializes the element field incorrectly", val.intValue(), elem.intValue());
+		assertEquals("The constructor initializes the type field incorrectly", val.getClass(), type);
 	}
 }

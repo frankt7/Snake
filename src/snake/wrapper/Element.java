@@ -12,12 +12,10 @@ public class Element<E> implements ElementType {
 	 * Fields
 	 * 
 	 * _elem - the element.
-	 * _type - a string representation of the element's type.
-	 *         the string representation is simply the value returned by
-	 *         _elem.getClass().getName()
+	 * _type - the type of the element.
 	 */
-	private E      _elem;
-	private String _type;
+	private E        _elem;
+	private Class<?> _type;
 	
 	/**
 	 * Creates an instance of {@link Element}. If the supplied
@@ -32,7 +30,7 @@ public class Element<E> implements ElementType {
 		}
 		
 		_elem = elem;
-		_type = _elem.getClass().getName();
+		_type = _elem.getClass();
 	}
 	
 	/**
@@ -44,10 +42,10 @@ public class Element<E> implements ElementType {
 	}
 	
 	/**
-	 * Returns the {@code String} representation of the wrapped element's type.
-	 * @return the {@code String} representation of the wrapped element's type.
+	 * Returns the wrapped element's type.
+	 * @return the wrapped element's type.
 	 */
-	public String getType() {
+	public Class<?> getType() {
 		return _type;
 	}
 }
