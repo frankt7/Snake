@@ -1,7 +1,5 @@
 package snake.node;
 
-import com.sun.org.apache.bcel.internal.generic.Type;
-
 import snake.wrapper.Element;
 import snake.wrapper.ElementType;
 
@@ -9,6 +7,7 @@ import snake.wrapper.ElementType;
  * A single entry of a singly linked list. This type of {@code Node} is designed 
  * for the {@link snake.Snake} data structure.
  */
+@SuppressWarnings("unchecked")
 public class Node {
 	/**
 	 * Fields
@@ -25,10 +24,8 @@ public class Node {
 	 * @param next - a reference to the next {@link Node}.
 	 */
 	public <E> Node(E elem, Node next) {
-		
 		_elem = new Element<E>(elem);
-		
-		this._next = next;
+		_next = next;
 	}
 	
 	/**
@@ -44,7 +41,6 @@ public class Node {
 	 * @return the next {@link Node}.
 	 */
 	public Node getNext() {
-
 		return _next;
 	}
 	
@@ -53,8 +49,7 @@ public class Node {
 	 * @param nextNode - the next {@link Node}.
 	 */
 	public void setNext(Node nextNode) {
-		
-		this._next = nextNode;
+		_next = nextNode;
 	}
 	
 	/**
@@ -62,7 +57,6 @@ public class Node {
 	 * @param elem - the new element to be stored.
 	 */
 	public <E> void setElement(E elem) {
-		
 		_elem = new Element<E>(elem);
 	}
 	
@@ -72,22 +66,7 @@ public class Node {
 	 * @return the element stored in this {@link Node}.
 	 */ 
 	public <E> E getElement() {
-		
 		Element<E> elem = (Element<E>) _elem;
-		
 		return elem.getElement();
-	}
-	
-	/**
-	 * Returns the type of the element of this {@link Node}.
-	 * The returned value is whatever returned by calling
-	 * {@code (...).getClass().getName()}
-	 * @return the type of the element of this {@link Node}.
-	 */
-	public <E> String getType() {
-		
-		Element<E> type = (Element<E>) _elem;
-		
-		return type.getType();
 	}
 }
