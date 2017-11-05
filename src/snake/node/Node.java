@@ -22,6 +22,7 @@ public class Node {
 	 * Creates an instance of {@link Node} which has a reference to the next {@link Node}.
 	 * @param elem - the element to be stored.
 	 * @param next - a reference to the next {@link Node}.
+	 * @throws IllegalArgumentException if the supplied element is {@code null}.
 	 */
 	public <E> Node(E elem, Node next) {
 		/**
@@ -35,6 +36,7 @@ public class Node {
 	/**
 	 * Creates an instance of {@link Node}.
 	 * @param elem - the element to be stored.
+	 * @throws IllegalArgumentException if the supplied element is {@code null}.
 	 */
 	public <E> Node(E elem) {
 		this(elem, null);

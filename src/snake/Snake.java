@@ -39,7 +39,7 @@ public class Snake implements Snek {
 	}
 	
 	/**
-	 * @throws IndexOutOfBoundsException if index < 0 && index >= size
+	 * @throws IndexOutOfBoundsException if index < 0 && index > size
 	 */
 	@Override
 	public <E> void add(int index, E elem) {

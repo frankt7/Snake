@@ -41,7 +41,8 @@ public interface Snek {
 	public <E> void remove(int index);
 	
 	/**
-	 * Returns the index where the supplied argument can be found. If the supplied element does not
+	 * Returns the index where the supplied argument can be found. Only the first
+	 * occurrence is returned where there duplicate elements. If the supplied element does not
 	 * exist in the list, -1 is returned. {@link Object#equals(Object)} must be
 	 * overridden properly for this method to work.
 	 * @param elem - the element to be found.
