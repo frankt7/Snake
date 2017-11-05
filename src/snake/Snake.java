@@ -24,7 +24,18 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> void add(E elem) {
-		// TODO
+		
+		if(_head != null) {
+			
+			Node oldNode = _head; 
+			_head = new Node(elem, oldNode);
+			
+		}
+		else {
+			
+			Node firstOne = new Node(elem, null);
+		}
+		
 	}
 	
 	/**
@@ -32,7 +43,7 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> void add(int index, E elem) {
-		// TODO
+		
 	}
 	
 	/**
