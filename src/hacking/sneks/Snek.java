@@ -14,6 +14,15 @@ public interface Snek {
 	public <E> void add(E elem);
 	
 	/**
+	 * Adds an element to the supplied position of this list. This method must throw an unchecked
+	 * exception if the supplied index in not a valid position.
+	 * @param index - the position of the element to insert.
+	 * @param elem  - the element to be added.
+	 * @throws RuntimeException if index is not a valid position.
+	 */
+	public <E> void add(int index, E elem);
+	
+	/**
 	 * Removes the first occurrence of element which is equal to the supplied argument from
 	 * the list. If the an element is removed from this list, {@code true} is returned;
 	 * otherwise {@code false} is returned. {@link Object#equals(Object)} must be
@@ -25,7 +34,7 @@ public interface Snek {
 	
 	/**
 	 * Returns the element at the supplied index. This method must throw an unchecked exception
-	 * if the supplied index is not a valid position in the list.
+	 * if the supplied index is not a valid position.
 	 * @param index - the position of the element.
 	 * @return the element at that position
 	 * @throws RuntimeExcpetion if index is not a valid position.
