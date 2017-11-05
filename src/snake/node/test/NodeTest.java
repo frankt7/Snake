@@ -62,7 +62,7 @@ public class NodeTest {
 		
 		node = new <Integer>Node(0xCAFEBABE);
 		actual = node.<Integer>getElement().intValue();
-		assertEquals("getElement() does not return the correct value", 0xCAFEBABE);
+		assertEquals("getElement() does not return the correct value", 0xCAFEBABE, actual);
 	}
 	
 	@Test
