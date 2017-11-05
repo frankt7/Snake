@@ -16,7 +16,8 @@ public class Snake implements Snek {
 	 * Creates an empty {@link Snek}.
 	 */
 	public Snake() {
-		// TODO
+		_head=null;
+		_size=0;
 	}
 	
 	/**
@@ -27,13 +28,12 @@ public class Snake implements Snek {
 		
 		if(_head != null) {
 			
-			Node oldNode = _head; 
-			_head = new Node(elem, oldNode);
-			
+			add(0, elem);			
 		}
 		else {
 			
 			new Node(elem, null);
+			++_size;
 		}
 		
 	}
@@ -44,6 +44,31 @@ public class Snake implements Snek {
 	@Override
 	public <E> void add(int index, E elem) {
 		
+		if(index < 0 || index > _size) {
+			
+			throw new IndexOutOfBoundsException("index does not exist");
+		}	
+		else if(index == 0) {
+			
+			Node oldNode = _head; 
+			_head = new Node(elem, oldNode);
+			++_size;
+		}
+		else if(index == _size) {
+			
+			Node newNode = new Node(elem, null);
+			Node oldNode = get(_size);
+			oldNode.setNext(newNode);
+			++_size;
+		}
+		else {
+			
+			Node prevNode = get(_size - 1);
+			Node newNode = new Node(elem, prevNode.getNext());
+			prevNode.setNext(newNode);
+			++_size;
+		}
+		
 	}
 	
 	/**
@@ -51,7 +76,33 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> boolean remove(E elem) {
-		// TODO
+		Node temp=_head;
+		Node old=temp;
+		if(temp!=null&&temp!=elem)//head is one increment above old
+		{
+			temp=temp.getNext();
+		}
+		else if(temp!=null)//if elem is head
+		{
+			_head=temp.getNext();
+			temp.setNext(null);
+			return true;
+		}
+		else
+		{
+			return false; //can't remove when list is empty
+		}
+		while(temp!=null&&temp!=elem)
+		{
+			temp=temp.getNext();
+			old=old.getNext();
+		}
+		if(temp==elem)
+		{
+			old.setNext(temp.getNext());
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -60,7 +111,18 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> void remove(int index) {
-		// TODO
+		Node temp= _head;
+		int i=0;
+		while(i<this._size){
+			if(i+1==index)
+			{
+				temp.setNext(temp.getNext().getNext());
+				break;
+			}
+			
+			temp=temp.getNext();
+			i=i+1;
+		}
 	}
 	
 	/**
@@ -68,19 +130,33 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> E get(int index) {
-		// TODO
-		return null;
+		int i=0;
+		Node temp=_head;
+		while(i<this._size){
+			if(i== index)
+			{
+				return temp.getElement();
+			}
+			temp=temp.getNext();
+			i=i+1;
+		}
+		throw new IndexOutOfBoundsException();
 	}
 
 	@Override
 	public <E> int getIndexOf(E elem) {
-		// TODO
-		return 0;
+		
+		for(int i = 0; i < _size; i++) {
+			if(get(i) == elem) {
+				return get(i);
+			}
+		}
+		return -1;
 	}
 	
 	@Override
 	public int size() {
-		// TODO
-		return 0;
+
+		return _size;
 	}
 }
