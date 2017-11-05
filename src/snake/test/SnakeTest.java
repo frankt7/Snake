@@ -61,6 +61,79 @@ public class SnakeTest {
 		int  size = getSize();
 		
 		assertEquals("add did not add the supplied element to the list correctly", 0xDEADFACE, head.<Integer>getElement().intValue());
+		assertEquals("add did not update the size field correctly", 1, size);
+	}
+	
+	@Test
+	public void testAddWithNonEmptySnekAtFirst() throws Exception {
+		Node newHead = new <Double>Node(123.321, new <Character>Node('\0'));
+		setHead(newHead);
+		setSize(2);
+		
+		snake.<Character>add(0, '\u2605');
+		Node head = getHead();
+		int  size = getSize();
+		
+		assertEquals("add did not update the size field correctly", 3, size);
+		assertEquals("add did not insert the element correctly", '\u2605', head.<Character>getElement().charValue());
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", 123.321, head.<Double>getElement().doubleValue(), 0.001);
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", '\0', head.<Character>getElement().charValue());
+		
+		head = head.getNext();
+		assertNull("the last element's next field should be null", head);
+	}
+	
+	@Test
+	public void testAddWithNonEmptySnekAtMiddle() throws Exception {
+		Node newHead = new <String>Node("blah", new <Boolean>Node(true, new <Boolean>Node(false)));
+		setHead(newHead);
+		setSize(3);
+		
+		snake.<Float>add(1, 3.14f);
+		Node head = getHead();
+		int  size = getSize();
+		
+		assertEquals("add did not update the size field correctly", 4, size);
+		assertEquals("add did not insert the element correctly", "blah", head.<String>getElement());
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", 3.14f, head.<Float>getElement().floatValue(), 0.001);
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", true, head.<Boolean>getElement().booleanValue());
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", false, head.<Boolean>getElement().booleanValue());
+		
+		head = head.getNext();
+		assertNull("the last element's next field should be null", head);
+	}
+	
+	@Test
+	public void testAddWithNonEmptySnekAtLast() throws Exception {
+		Node newHead = new <Integer>Node(123, new <String>Node("123"));
+		setHead(newHead);
+		setSize(2);
+		
+		snake.<String>add(1, "123");
+		Node head = getHead();
+		int  size = getSize();
+		
+		assertEquals("add did not update the size field correctly", 3, size);
+		assertEquals("add did not insert the element correctly", 123, head.<Integer>getElement().intValue());
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", "123", head.<String>getElement());
+		
+		head = head.getNext();
+		assertEquals("add did not insert the element correctly", "123", head.<String>getElement());
+		
+		head = head.getNext();
+		assertNull("the last element's next field should be null", head);
 	}
 	
 	private void setSize(int newSize) throws Exception {
