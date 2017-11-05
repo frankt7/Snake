@@ -25,17 +25,7 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> void add(E elem) {
-		
-		if(_head != null) {
-			
-			add(0, elem);			
-		}
-		else {
-			
-			new Node(elem, null);
-			++_size;
-		}
-		
+		add(0, elem);
 	}
 	
 	/**
@@ -43,32 +33,27 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> void add(int index, E elem) {
-		
 		if(index < 0 || index > _size) {
-			
 			throw new IndexOutOfBoundsException("index does not exist");
-		}	
-		else if(index == 0) {
-			
-			Node oldNode = _head; 
-			_head = new Node(elem, oldNode);
-			++_size;
-		}
-		else if(index == _size) {
-			
-			Node newNode = new Node(elem, null);
-			Node oldNode = get(_size);
-			oldNode.setNext(newNode);
-			++_size;
-		}
-		else {
-			
-			Node prevNode = get(_size - 1);
-			Node newNode = new Node(elem, prevNode.getNext());
-			prevNode.setNext(newNode);
-			++_size;
 		}
 		
+		if(_size == 0) {
+			_head = new <E>Node(elem);
+		} else {
+			Node cursor = _head;
+			if(index == 0) {
+				_head = new <E>Node(elem, cursor);
+			} else {
+				for(int i = 1; i < index - 1; i++) {
+					cursor = cursor.getNext();
+				}
+				Node next = cursor.getNext();
+				
+				cursor.setNext(new <E>Node(elem, next));
+			}
+		}
+		
+		_size += 1;
 	}
 	
 	/**
@@ -130,17 +115,16 @@ public class Snake implements Snek {
 	 */
 	@Override
 	public <E> E get(int index) {
-		int i=0;
-		Node temp=_head;
-		while(i<this._size){
-			if(i== index)
-			{
-				return temp.getElement();
-			}
-			temp=temp.getNext();
-			i=i+1;
+		if(index < 0 || index >= _size) {
+			throw new IndexOutOfBoundsException("code broken, good time to cry");
 		}
-		throw new IndexOutOfBoundsException();
+		
+		Node cursor = _head;
+		for(int i = 1; i <= index; i++) {
+			cursor = cursor.getNext();
+		}
+		
+		return cursor.<E>getElement();
 	}
 
 	@Override
